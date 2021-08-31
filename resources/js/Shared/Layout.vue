@@ -4,7 +4,7 @@
     <!-- navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
       <menu class="container">
-        <a class="navbar-brand" href="/home">
+        <a class="navbar-brand" href="/">
         <img src="http://dishub.banyuwangikab.go.id/img/logo.png" alt="">
         </a>
 

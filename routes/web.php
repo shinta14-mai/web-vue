@@ -39,6 +39,7 @@ Route::get('/andalalin', [TbAndalalinController::class, 'index']);
 Route::post('/andalalin', [TbAndalalinController::class, 'store']);
 Route::get('/andalalin/create', [TbAndalalinController::class, 'create']);
 Route::get('/andal', [TbAndalalinController::class, 'index2'])->name('andal.index');
+// Route::get('/andal/action', [TbAndalalinController::class, 'action'])->name('andal.action');
 Route::get('/andal/{id}', [TbAndalalinController::class, 'show'])->name('andal.show');
 Route::put('/andal/{id}', [TbAndalalinController::class, 'update']);
 Route::get('/andal/{id}/edit', [TbAndalalinController::class, 'edit']);
@@ -59,5 +60,5 @@ Route::get('/st/{id}', [StandarTekController::class, 'show'])->name('st.show');
 Route::put('/st/{id}', [StandarTekController::class, 'update']);
 Route::get('/st/{id}/edit', [StandarTekController::class, 'edit']);
 
-// Route::get('/login', [DbAdministratorController::class, 'login']);
+Route::get('/login', [DbAdministratorController::class, 'login']);
 Route::get('/admin', [DbAdministratorController::class, 'index']);

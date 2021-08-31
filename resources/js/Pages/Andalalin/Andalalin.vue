@@ -5,7 +5,15 @@
     <Layout></Layout>
   </div>
   <div class="col-10">
-      <div class="table-responsive">
+         <div class="row">
+      <div class="col-md-6">
+      <input type="text"> 
+      </div>
+      <div class="col-md-2">
+       <button type="button" name="search" id="search" class="btn btn-success">Search</button>
+      </div>
+     </div>
+  <div class="table-responsive">
   <table class="table table-bordered table-dark">
   <thead>
     <tr>
@@ -29,9 +37,13 @@
     </tr>
   </tbody>
   </table>
-</div>
-  </div> 
+</div> -->
+</div> 
 </div>  
+<div class="p-5 flex justify-end">
+  <Link class="px-2" :href="halaman.prev_page_url">Previous</Link>
+  <Link class="px-2" :href="halaman.next_page_url">Next</Link>
+</div>
 </template>
 
 <script>
@@ -39,12 +51,32 @@ import { Link } from '@inertiajs/inertia-vue3';
 import Layout from '../../Shared/Sidebar.vue';
 export default {
     props: {
-    admin: Array
+    admin: Array,
+    halaman: Object
   },
     components: {
     Layout,
     Link
-    }
+    },
+
+    //   data() {
+    //     return {
+    //         keyword: null,
+    //         TbAndalalin: []
+    //     };
+    // },
+    // watch: {
+    //     keyword(after, before) {
+    //         this.getResults();
+    //     }
+    // },
+    // methods: {
+    //     getResults() {
+    //         axios.get('/andal/action', { params: { keyword: this.keyword } })
+    //             .then(res => this.Books = res.data)
+    //             .catch(error => {});
+    //     }
+    // }
 
 }
 </script>

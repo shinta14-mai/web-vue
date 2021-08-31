@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr v-for="ad1 in admin" :key="ad1.id">
+    <tr v-for="ad1 in andal" :key="ad1.id">
       <td>{{ad1.alamat_pemohon}}</td>
       <td>{{ad1.no_tlp}}</td>
       <td>{{ad1.jenis_usaha}}</td>
@@ -45,7 +45,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr v-for="ad1 in admin" :key="ad1.id">
+    <tr v-for="ad1 in andal" :key="ad1.id">
       <td>
         <a :href="`/img/${ad1.surat_pemohon}`" target="_blank" rel="noopener noreferrer">{{ad1.surat_pemohon}}</a>
       </td>
@@ -93,7 +93,7 @@
 import { Link } from '@inertiajs/inertia-vue3';
 export default {
     props: {
-        admin: Array
+        andal: Array
     },
     components: {
         Link,

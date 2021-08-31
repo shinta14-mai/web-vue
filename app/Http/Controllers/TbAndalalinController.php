@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\TbAndalalin;
 use Illuminate\Support\Facades\Redirect;
+use DataTables;
 
 class TbAndalalinController extends Controller
 {
@@ -13,17 +14,21 @@ class TbAndalalinController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
      */
     public function index()
     {
         return Inertia::render('Andalalin/Index');
     }
 
-    public function index2()
+    public function index2(Request $request)
     {
-        $admin = TbAndalalin::orderBy('id', 'DESC')->get();
+        $admin = TbAndalalin::orderBy('id', 'DESC')->paginate(5);
         return Inertia::render('Andalalin/Andalalin', [
             'admin' => $admin,
+            // 'halaman' => TbAndalalin::when($request->term, function($query, $term){
+            //     $query->where('code', 'LIKE', '%'.$term.'%');
+            // })->paginate(10)
         ]);
     }
     /**
@@ -192,4 +197,5 @@ class TbAndalalinController extends Controller
     {
         //
     }
+    
 }

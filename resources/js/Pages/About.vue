@@ -1,7 +1,8 @@
 <template>
 <Layout>
-    <Head title="About" />
-    <h1 v-text="name"></h1>
+    <section class="about">
+            <h1 v-text="name"></h1>
+    </section>
 </Layout>
 </template>
 
