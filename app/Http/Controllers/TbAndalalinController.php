@@ -23,12 +23,11 @@ class TbAndalalinController extends Controller
 
     public function index2(Request $request)
     {
-        $admin = TbAndalalin::orderBy('id', 'DESC')->paginate(5);
+        // $admin = TbAndalalin::orderBy('id', 'DESC')->get();
         return Inertia::render('Andalalin/Andalalin', [
-            'admin' => $admin,
-            // 'halaman' => TbAndalalin::when($request->term, function($query, $term){
-            //     $query->where('code', 'LIKE', '%'.$term.'%');
-            // })->paginate(10)
+            'admin' => TbAndalalin::when($request->term, function($query, $term){
+                $query->where('code', 'LIKE', '%'.$term.'%');
+            })->paginate(),
         ]);
     }
     /**

@@ -7,7 +7,6 @@
         <a class="navbar-brand" href="/">
         <img src="http://dishub.banyuwangikab.go.id/img/logo.png" alt="">
         </a>
-
         <div class="menu">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -22,16 +21,9 @@
               <a class="nav-link" href="/login"><h6>LOGIN</h6></a>
               <!-- <a href="/users">LOGIN</a> -->
             </li>
-          
-
-          <form class="form-inline my-2 my-lg-0"> 
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg>
-            </button> -->
-          </form>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search" id="search" v-model="term" @keyup="search">
+            </div>
           </ul>
         </div>
       </menu>
@@ -129,15 +121,28 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3'
-
+import _ from 'lodash';
 export default {
   components: {
     Link,
-  }
+  },
+        props: {
+    admin: Object,
+  },
+      data(){
+    return{
+      term: ''
+    }
+  },
+  methods:{
+    search: _.throttle(function(){
+      this.$inertia.get('/andal/', {term: this.term})
+    })
+  },
 }
 </script>
 
-<style >
+<style>
 /* style navbar */
 .navbar{
   background-color: rgb(3, 3, 70);

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\DbAdministrator;
-use App\Models\DbAndalalin;
+use App\Models\TbAndalalin;
 use Illuminate\Support\Facades\Redirect;
 
 class DbAdministratorController extends Controller
@@ -24,6 +24,7 @@ class DbAdministratorController extends Controller
     {
         return Inertia::render('Admin/Index');
     }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -45,6 +46,14 @@ class DbAdministratorController extends Controller
         //
     }
 
+    public function home(Request $request){
+        return Inertia::render('Home', [
+            'admin' => TbAndalalin::when($request->term, function($query, $term){
+                $query->where('code', 'LIKE', '%'.$term.'%');
+            })->paginate(),
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -56,6 +65,13 @@ class DbAdministratorController extends Controller
         //
     }
 
+    public function status(TbAndalalin $id)
+    {
+        $andal = TbAndalalin::find($id);
+        return Inertia::render('Status', [
+            'andal' => $andal,
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

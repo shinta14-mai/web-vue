@@ -166,12 +166,13 @@
 <script>
 import { Link } from '@inertiajs/inertia-vue3';
 import Layout from '../Shared/Layout.vue';
+import _ from 'lodash';
 export default {
-    props: ['info'],
     components: {
     Link,
     Layout,
-    }
+    },
+
 
 }
 </script>

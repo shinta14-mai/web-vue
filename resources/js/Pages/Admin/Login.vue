@@ -76,7 +76,7 @@ export default {
         password: null,
     })
     function submit() {
-      admin.post('/admin', this.admin)
+      admin.get('/admin', this.admin)
     }
     return { admin, submit }
   },

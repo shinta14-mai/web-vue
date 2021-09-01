@@ -23,9 +23,10 @@ use App\Http\Controllers\DbAdministratorController;
 //     return view('welcome');
 // });
 
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', [DbAdministratorController::class, 'home']);
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/info', [PagesController::class, 'info']);
+Route::get('/status', [DbAdministratorController::class, 'status']);
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
 Route::post('/users', [UserController::class, 'store']);

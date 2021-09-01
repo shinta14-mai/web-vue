@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\DbAdministratorController;
+use App\Models\DbAdministrator;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('admin', function($id){
+            return $id->owner;
+        });
     }
 }
